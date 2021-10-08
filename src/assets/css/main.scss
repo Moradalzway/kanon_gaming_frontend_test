@@ -1,0 +1,115 @@
+$primaryColor : #E94560;
+$accentColor : #0F3460;
+$darkColor : #1A1A2E;
+$primaryFontColor : #fdfdfd;
+
+
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "tahoma";
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+body{
+    background-color: $darkColor;
+    background-size: cover;
+}
+
+#header {
+  width: 100%;
+  text-align: center;
+  margin: 20px auto;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0px 20px;
+    overflow: hidden;
+    background-color: $primaryColor;
+    li {
+      display: inline;
+      float: left;
+      a {
+        font-size: 20px;
+        display: block;
+        color: $primaryFontColor;
+        text-align: center;
+        padding: 20px 16px;
+        text-decoration: none;
+        &:hover {
+          background-color: $accentColor;
+        }
+      }
+    }
+  }
+}
+
+
+.container {
+    width: 1200px;
+}
+
+
+.card{
+    width: 100%;
+    padding: 40px;
+    background-color: $primaryFontColor;
+}
+
+.form-inline{
+    display: flex;
+}
+
+.input{
+    margin: 0px 10px 0px 0px;
+    display: inline;
+    width: 100%;
+    padding: 15px 20px;
+}
+
+.btn{
+    display: block;
+    padding: 15px 20px;
+    font-size: 16px;
+    border: 0px solid;
+    cursor: pointer;
+}
+
+.btn-primary{
+    background-color: $accentColor;
+    color: $primaryFontColor;
+    
+    &:hover{
+        opacity: 0.9;
+    }
+    
+}
+
+.table{
+    display: table;
+    border: 1px solid $accentColor;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 2px;
+
+    tr{
+        display: table-row;
+
+        td{
+            border: 1px solid #dee2e6;
+            padding: .75rem;
+            vertical-align: middle;
+            text-align: start;
+        }
+    }
+}
+
+.text-center{
+    text-align: center;
+}

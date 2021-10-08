@@ -1,24 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./components/layouts/Header";
+import "./assets/css/main.css";
+import { BrowserRouter } from "react-router-dom";
+import { MasterPage } from "./components/MasterPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App container" style={{margin:"auto"}}>
+      <BrowserRouter><Header /> <MasterPage /></BrowserRouter>
     </div>
   );
 }
