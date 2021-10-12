@@ -13,7 +13,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
 
-### Go To [Backend] forlder and run `npm run start:dev`
+### Go To [server_backend] forlder and run `npm run start:dev`
 
 Runs the app [Backend] in the development mode.\
 Open [http://localhost:3020](http://localhost:3020) to view it in the browser.
