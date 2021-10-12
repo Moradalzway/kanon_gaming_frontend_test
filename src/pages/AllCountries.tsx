@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { Component } from "react";
+import { Component } from "react";
 import RotateLoader from "react-spinners/RotateLoader";
 
 class AllCountries extends Component<any, any> {
@@ -20,38 +20,35 @@ class AllCountries extends Component<any, any> {
 
   handleInputOnChange(e: any) {
     const keyword = e.target.value;
-    this.setState({ countryName: e.target.value});
-    if (keyword !== '') {
-      const _results = this.state.countries.filter((country : any) => {
+    this.setState({ countryName: e.target.value });
+    if (keyword !== "") {
+      const _results = this.state.countries.filter((country: any) => {
         return country.name.toLowerCase().startsWith(keyword.toLowerCase());
         // Use the toLowerCase() method to make it case-insensitive
       });
       this.setState({
-        results: _results
-      })
+        results: _results,
+      });
     } else {
       // If the text field is empty, show all users
       this.setState({
-        results:  this.state.countries,
-      })
+        results: this.state.countries,
+      });
     }
-
   }
 
   // here we will get all countries
   async getData() {
     this.setState({ isLoading: true });
-    const accessToken = "16848296cf3f1c738e6b405e84c69fb4";
-    const baseURL = "http://api.countrylayer.com/v2/all";
+    const baseURL = "/countries/all";
 
     await axios
-      .get(baseURL + "?access_key=" + accessToken)
-      .then((response) => {
-        console.log(response);
+      .get(baseURL)
+      .then((response: any) => {
         if (response.status === 200) {
           this.setState({
-            countries: response.data,
-            results: response.data,
+            countries: response.data.result,
+            results: response.data.result,
           });
         } else {
           this.setState({
@@ -59,7 +56,7 @@ class AllCountries extends Component<any, any> {
           });
         }
       })
-      .catch((error) => {
+      .catch(() => {
         this.setState({
           error: "Sorry there is no data about ",
         });
@@ -97,7 +94,7 @@ class AllCountries extends Component<any, any> {
                   placeholder="Please enter the country name"
                 />
               </div>
-              <br/>
+              <br />
               {this.state.results.length !== 0 && (
                 <table className="table">
                   {this.state.results.map((_element: any, index: number) => (

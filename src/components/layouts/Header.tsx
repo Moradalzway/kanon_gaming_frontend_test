@@ -1,19 +1,59 @@
-import React, { Component } from 'react';
+import { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-class Header extends Component {
-    render() {
-        return (
-            <div id="header">
-                <ul>
-                    <li><Link to="/check-country">Check Country By Name</Link></li>
-                    <li><Link to="/all-countries">All Countries</Link></li>
-                    <li><Link to="/home">Contact</Link></li>
-                    <li><Link to="/home">About</Link></li>
-                    <li style={{float:'right'}}><Link className="active" to="/clients">About</Link></li>
-                </ul>
-            </div>
-        );
-    }
+import { logoutAction } from "../../redux/actions/auth";
+
+class Header extends Component<any, any> {
+  render() {
+    return (
+      <div id="header">
+        <ul>
+          <li>
+            <Link to="/check-country">Check Country By Name</Link>
+          </li>
+          <li>
+            <Link to="/all-countries">All Countries</Link>
+          </li>
+          <li>
+            <Link to="/slot-machine">Slot Machine</Link>
+          </li>
+          {this.props.isLoggedIn && (
+            <>
+              <li style={{ float: "right" }}>
+                <a href="#">Hi, {this.props.user.name}</a>
+              </li>
+              <li style={{ float: "right" }}>
+                <button onClick={this.props.logoutAction}>Logout</button>
+              </li>
+            </>
+          )}
+          {!this.props.isLoggedIn && (
+            <>
+              <li style={{ float: "right" }}>
+                <Link className="active" to="/register">
+                  Register
+                </Link>
+              </li>
+              <li style={{ float: "right" }}>
+                <Link className="active" to="/login">
+                  Login
+                </Link>
+              </li>
+            </>
+          )}
+        </ul>
+      </div>
+    );
+  }
 }
 
-export default Header;
+const mapStateToProps = (state: any) => ({
+  user: state.user,
+  isLoggedIn: state.isLoggedIn,
+});
+
+const mapDispatchToProps = () => ({
+  logoutAction,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(Header);

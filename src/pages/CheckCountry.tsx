@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { Component } from "react";
+import { Component } from "react";
 import RotateLoader from "react-spinners/RotateLoader";
 
 class CheckCountry extends Component<any, any> {
@@ -22,36 +22,34 @@ class CheckCountry extends Component<any, any> {
   }
 
   async getData() {
-      
     this.setState({ isLoading: true });
 
-    console.log("this.state.countryName", this.state.countryName);
-    const accessToken = "16848296cf3f1c738e6b405e84c69fb4";
-    const baseURL = "http://api.countrylayer.com/v2/name/";
+    const baseURL = "/countries/search";
+
+    const data = {
+      countryName: this.state.countryName,
+    };
 
     await axios
-      .get(baseURL + this.state.countryName + "?access_key=" + accessToken)
-      .then((response) => {
-        console.log(response);
+      .post(baseURL, data)
+      .then((response: any) => {
         if (response.status === 200) {
           this.setState({
-            countryData: response.data[0],
+            countryData: response.data.result,
           });
         } else {
           this.setState({
-            error: "Sorry there is no data about ",
+            error: response.data.message,
           });
         }
-
-      
-      }).catch((error) => {
+      })
+      .catch(() => {
         this.setState({
-            error: "Sorry there is no data about ",
-          });
-        }
-      );
+          error: "Sorry there is no data about ",
+        });
+      });
 
-      this.setState({ isLoading: false });
+    this.setState({ isLoading: false });
   }
 
   render() {
@@ -73,9 +71,7 @@ class CheckCountry extends Component<any, any> {
         </div>
         <br />
         {this.state.error != null && (
-          <div className="card text-center">
-            {this.state.error}
-          </div>
+          <div className="card text-center">{this.state.error}</div>
         )}
         {this.state.isLoading && (
           <div className="card text-center">
@@ -92,38 +88,40 @@ class CheckCountry extends Component<any, any> {
             <h2>Result of {this.state.countryName}</h2>
             <br />
             <table className="table">
-              <tr>
-                <td>Name</td>
-                <td>{this.state.countryData.name || ""}</td>
-              </tr>
-              <tr>
-                <td>Top Level Domain</td>
-                <td>{this.state.countryData.topLevelDomain}</td>
-              </tr>
-              <tr>
-                <td>Alpha2 Code</td>
-                <td>{this.state.countryData.alpha2Code}</td>
-              </tr>
-              <tr>
-                <td>Alpha3 Code</td>
-                <td>{this.state.countryData.alpha3Code}</td>
-              </tr>
-              <tr>
-                <td>Calling Codes</td>
-                <td>{this.state.countryData.callingCodes[0]}</td>
-              </tr>
-              <tr>
-                <td>Capital</td>
-                <td>{this.state.countryData.capital}</td>
-              </tr>
-              <tr>
-                <td>Alt Spellings</td>
-                <td>{this.state.countryData.altSpellings[1]}</td>
-              </tr>
-              <tr>
-                <td>Region</td>
-                <td>{this.state.countryData.region}</td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td>Name</td>
+                  <td>{this.state.countryData.name || ""}</td>
+                </tr>
+                <tr>
+                  <td>Top Level Domain</td>
+                  <td>{this.state.countryData.topLevelDomain}</td>
+                </tr>
+                <tr>
+                  <td>Alpha2 Code</td>
+                  <td>{this.state.countryData.alpha2Code}</td>
+                </tr>
+                <tr>
+                  <td>Alpha3 Code</td>
+                  <td>{this.state.countryData.alpha3Code}</td>
+                </tr>
+                <tr>
+                  <td>Calling Codes</td>
+                  <td>{this.state.countryData.callingCodes[0]}</td>
+                </tr>
+                <tr>
+                  <td>Capital</td>
+                  <td>{this.state.countryData.capital}</td>
+                </tr>
+                <tr>
+                  <td>Alt Spellings</td>
+                  <td>{this.state.countryData.altSpellings[1]}</td>
+                </tr>
+                <tr>
+                  <td>Region</td>
+                  <td>{this.state.countryData.region}</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         )}

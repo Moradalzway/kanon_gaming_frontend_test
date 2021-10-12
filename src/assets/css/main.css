@@ -46,6 +46,21 @@ body {
   background-color: #0F3460;
 }
 
+#header ul li button {
+  background-color: transparent;
+  border: 0px;
+  font-size: 20px;
+  display: block;
+  color: #fdfdfd;
+  text-align: center;
+  padding: 20px 16px;
+  text-decoration: none;
+}
+
+#header ul li button:hover {
+  background-color: #0F3460;
+}
+
 .container {
   width: 1200px;
 }
@@ -53,7 +68,7 @@ body {
 .card {
   width: 100%;
   padding: 40px;
-  background-color: #fdfdfd;
+  background-color: #fdfdfd !important;
 }
 
 .form-inline {
@@ -109,6 +124,152 @@ body {
 }
 
 .text-center {
+  text-align: center !important;
+  margin: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main {
+  border-radius: 5px;
+  background-color: #0F3460;
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: calc((100% - 580px) / 2);
+  width: 550px;
+}
+
+section#status {
+  margin-bottom: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-radius: 5px;
   text-align: center;
+  background-color: #37474F;
+  color: #FFFFFF;
+  font-size: 25px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+#slots {
+  border-radius: 15px;
+  width: 100%;
+  margin: 0px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#btn-spin {
+  width: 100%;
+  margin-top: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #fdfdfd;
+  color: #E94560;
+  font-size: 25px;
+}
+
+#btn-spin:hover {
+  background-color: #E94560;
+  color: #fdfdfd;
+}
+
+section
+section#options {
+  margin-top: 20px;
+  padding-top: 5px;
+  border-radius: 5px;
+  background-color: #C62828;
+  color: #FFFFFF;
+}
+
+.option {
+  padding-left: 5px;
+}
+
+section#info {
+  background-color: #616161;
+  padding-left: 12px;
+  padding-bottom: 12px;
+  border-radius: 5px;
+  overflow: hidden;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  color: #BDBDBD;
+  margin-top: 50px;
+  margin-left: 30%;
+  margin-right: 30%;
+  display: none;
+}
+
+#slot1, #slot2, #slot3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-size: 100px;
+  width: 150px;
+  background-repeat: no-repeat;
+  height: 150px;
+  background-color: white;
+  background-position: center;
+}
+
+.lemon {
+  background-image: url("../images/lemon.png");
+}
+
+.banana {
+  background-image: url("../images/bananas.png");
+}
+
+.apple {
+  background-image: url("../images/apple.png");
+}
+
+.cherry {
+  background-image: url("../images/cherry.png");
+}
+
+.slotUserName {
+  color: #fdfdfd;
+}
+
+.alert {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.btn-disabled {
+  cursor: not-allowed;
+  color: grey;
+  opacity: 0.5;
 }
 /*# sourceMappingURL=main.css.map */
